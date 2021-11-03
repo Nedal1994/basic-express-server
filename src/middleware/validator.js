@@ -4,6 +4,7 @@ function validation(req,res,next)
 {
     if(req.query.name)
     {
+        console.log(req.query.name.toString());
         next()
     }
     else

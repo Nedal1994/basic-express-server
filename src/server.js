@@ -10,9 +10,6 @@ const errorHandler=require('./error-handlers/500')
 
 const PORT = process.env.PORT || 3200
 
-server.use(logger)
-
-
 server.get('/hello',(req,res)=>{
     res.status(200).send('all is good')
 })
@@ -23,6 +20,7 @@ server.get('/error',(req,res,next)=>{
 
 server.use('*',notFoundHandler)
 server.use(errorHandler)
+server.use(logger)
 
 function start(){
     server.listen(PORT,()=>{

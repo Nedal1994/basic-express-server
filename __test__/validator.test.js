@@ -1,8 +1,7 @@
 'use strict'
 
-const server=require('../src/server')
+const {server}=require('../src/server')
 const supertest=require('supertest') 
-const request=supertest(server)
 const mockRequest = supertest(server)
 
 describe('Validation',()=>{
@@ -12,12 +11,12 @@ describe('Validation',()=>{
     })
 
     test('respond with 404 status',async()=>{
-        const response=await mockRequest.get('/foo')
+        const response=await mockRequest.get('/notfound')
         expect(response.status).toBe(404)
     })
 
     test('respond with 500 status',async()=>{
-        const response=await mockRequest.get('error')
+        const response=await mockRequest.get('/error')
         expect(response.status).toBe(500)
     })
 })
